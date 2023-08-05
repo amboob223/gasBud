@@ -1,7 +1,7 @@
 // Importing the required classes (assume you have them defined in separate files)
-import { App } from './app';
-import { User } from './user';
-import { Gasser } from './gasser';
+import { App } from './classes/app';
+import { User } from '.classes/user';
+import { Gasser } from './classes/gasser';
 
 // Create an instance of the App class
 const gasBudApp = new App();
