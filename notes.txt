@@ -1,0 +1,27 @@
+  +---------------------------------+
+  |             App                 |
+  +---------------------------------+
+  | - users: User[]                 |
+  | - gassers: Gasser[]             |
+  +---------------------------------+
+  | + addUser(name, location, photo)|
+  | + addGasser(name, location, photo, bank)|
+  | + sortGassersByDistance(location): Gasser[]|
+  | + payGasser(gasser: Gasser, amount: number): void|
+  | + requestGasser(user: User): void|
+  +---------------------------------+
+                     ^
+                     |
+              +-----------------+
+              |                 |
+          +-------+          +---------+
+          | User  |          |  Gasser |
+          +-------+          +---------+
+          | name  |          | name    |
+          | location|        | location|
+          | photo |          | photo   |
+          | gasPay|          | bank    |
+          +-------+          +---------+
+          | sort()|          | acceptJob(user: User): void|
+          | pay() |          | concludeJob(): void        |
+          +-------+          +---------+
