@@ -6,7 +6,6 @@
 const { Gasser } = require("./gasser"); // we had to deconstruct gasser class from the file 
 const { User } = require("./user");
 
-
 class App {
 
 
@@ -51,3 +50,4 @@ class App {
 
 }
 
+module.exports = { App }
