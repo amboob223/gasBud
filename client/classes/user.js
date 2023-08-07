@@ -13,11 +13,5 @@ class User {
         this.pay = pay;
     }
 
-    //make a payment 
-    makePay(pay) {
-        this.pay += pay
-        return pay
-    } // okay now inn the app i would user1.pay(pay) and it will raise the account of the user 
-
 }
 module.exports = { User };

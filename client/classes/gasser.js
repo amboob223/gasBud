@@ -10,7 +10,7 @@ class Gasser {
             this.bank = bank // these are getters
     }
 
-    recievePay(pay) {
+    receivePay(pay) {
         this.bank += pay
         return this.bank
     }
