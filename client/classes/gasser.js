@@ -1,35 +1,19 @@
 // gasser.js
-
-// Gasser class definition
+//this will be the gasser class it will take in a name a location and a bank pramenter
+//the the method is 
+//accepting the payment which increases the bank by the users.pay 
+//
 class Gasser {
-    constructor(name, location, photo, bank) {
-        this.name = name;
-        this.location = location;
-        this.photo = photo;
-        this.bank = bank;
-        this.isJobAccepted = false; // A flag to track if a job is accepted
+    constructor(name, location, bank) {
+        this.name = name,
+            this.location = location,
+            this.bank = bank // these are getters
     }
 
-    // Method to accept a job from the user queue
-    acceptJob(user) {
-        if (this.isJobAccepted) {
-            console.log(`Job already accepted by ${this.name}.`);
-        } else {
-            console.log(`${this.name} accepts the job from ${user.name}.`);
-            this.isJobAccepted = true;
-        }
-    }
-
-    // Method to conclude the job and mark it as completed
-    concludeJob() {
-        if (!this.isJobAccepted) {
-            console.log(`${this.name} has no job to conclude.`);
-        } else {
-            console.log(`${this.name} concludes the job.`);
-            this.isJobAccepted = false;
-        }
+    recievePay(pay) {
+        this.bank += pay
+        return this.bank
     }
 }
 
-// Export the Gasser class for use in other files
-export { Gasser };
+module.exports = { Gasser };

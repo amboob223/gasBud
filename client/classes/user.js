@@ -1,26 +1,23 @@
-// user.js
+// this is a class that will have a few methods and attributes to indicate a new user
+// in the app thats where will make the instances of a gasser and a user 
+// some of the attributes for a user is . name,pay,vehicle,photo
+// some of the methods are:
 
-// User class definition
+// submiting a name which is putting the info in the server.
+// the paynenbt method that changes the account of the gasser.
+// there will also on the gasser side.
 class User {
-    constructor(name, location, photo, gasPay) {
+    constructor(name, location, pay) {
         this.name = name;
         this.location = location;
-        this.photo = photo;
-        this.gasPay = gasPay;
+        this.pay = pay;
     }
 
-    // Method for the user to sort through Gassers (optional, not specified in the requirements)
-    sort() {
-        // Implementation for sorting Gassers based on preferences can be added here
-        console.log(`${this.name} is sorting through Gassers.`);
-    }
+    //make a payment 
+    makePay(pay) {
+        this.pay += pay
+        return pay
+    } // okay now inn the app i would user1.pay(pay) and it will raise the account of the user 
 
-    // Method for the user to pay the Gasser for a completed job
-    pay() {
-        console.log(`${this.name} is paying the Gasser.`);
-        // Implementation to make the payment to the Gasser can be added here
-    }
 }
-
-// Export the User class for use in other files
-export { User };
+module.exports = { User };

@@ -1,68 +1,45 @@
-// server/server.js
-
-// Import required modules
-const express = require('express');
-const bodyParser = require('body-parser');
-
-// Create an instance of Express app
+const express = require("express");
 const app = express();
+const cors = require("cors");
+const pool = require("./db");
 
-// Set up body-parser middleware to parse JSON data
-app.use(bodyParser.json());
+//middlewarte
+app.use(cors);
+app.use(express.json());
 
-// Import the App class (assuming it's defined in app.js)
-const { App } = require('./app');
+// making a post
+app.post("/users", async (req, res) => {
+    try {
+        const { name, location, pay } = req.body;
+        const newData = await pool.query(
+            "INSERT INTO users(id,name,location,pay) VALUES(nextval('users_id_seq'),$1,$2,$3) RETURNING *",
+            [name, location, pay]
+        )
+        res.json(newData.rows)
 
-// Create an instance of the App class
-const gasBudApp = new App();
-
-// Endpoint to add a new user
-app.post('/users', (req, res) => {
-    const { name, location, photo, gasPay } = req.body;
-    gasBudApp.addUser(name, location, photo, gasPay);
-    res.json({ message: 'User added successfully' });
-});
-
-// Endpoint to add a new gasser
-app.post('/gassers', (req, res) => {
-    const { name, location, photo, bank } = req.body;
-    gasBudApp.addGasser(name, location, photo, bank);
-    res.json({ message: 'Gasser added successfully' });
-});
-
-// Endpoint to sort gassers based on user location (optional)
-app.post('/sort-gassers', (req, res) => {
-    const { location } = req.body;
-    const sortedGassers = gasBudApp.sortGassersByDistance(location);
-    res.json({ gassers: sortedGassers });
-});
-
-// Endpoint for the user to pay the gasser
-app.post('/pay-gasser', (req, res) => {
-    const { gasserName, amount } = req.body;
-    const gasser = gasBudApp.gassers.find((g) => g.name === gasserName);
-    if (gasser) {
-        gasBudApp.payGasser(gasser, amount);
-        res.json({ message: `Paid ${gasserName} $${amount}` });
-    } else {
-        res.status(404).json({ error: 'Gasser not found' });
+    } catch (error) {
+        console.log(error.message)
     }
-});
 
-// Endpoint for the user to request a gasser
-app.post('/request-gasser', (req, res) => {
-    const { userName } = req.body;
-    const user = gasBudApp.users.find((u) => u.name === userName);
-    if (user) {
-        gasBudApp.requestGasser(user);
-        res.json({ message: `${userName} requested a gasser` });
-    } else {
-        res.status(404).json({ error: 'User not found' });
+
+})
+
+app.post("/gassers", async (req, res) => {
+    try {
+        const { name, location, bank } = req.body;
+        const newData = await pool.query(
+            "INSERT INTO gassers(id,name,location,bank) VALUES(nextval('gasser_id_seq'),$1,$2,$3) RETURNING *",
+            [name, location, bank]
+        )
+        res.json(newData.rows)
+
+    } catch (error) {
+        console.log(error.message)
     }
-});
 
-// Start the server
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
-});
+})
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log("server works")
+})

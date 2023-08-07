@@ -25,3 +25,12 @@
           | sort()|          | acceptJob(user: User): void|
           | pay() |          | concludeJob(): void        |
           +-------+          +---------+
+
+
+                // 4 agreements
+        // dont take nun personal
+        // dont make assumptions
+        // be carful with your words
+        // always do your best
+
+        dont forget to do the kikoff app 
