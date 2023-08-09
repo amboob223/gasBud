@@ -3,8 +3,10 @@
 // we will import the other methods into this one 
 //will have the sort method 
 //and the make payment buttob, 
-const { Gasser } = require("./gasser"); // we had to deconstruct gasser class from the file 
-const { User } = require("./user");
+
+
+import { Gasser } from "./gasser"; // we had to deconstruct gasser class from the file 
+import { User } from "./user";
 
 class App {
 
@@ -14,7 +16,6 @@ class App {
             this.users = []
 
     }
-
 
     //method
     //user
@@ -50,4 +51,5 @@ class App {
 
 }
 
-module.exports = { App }
+
+module.exports = { App };
