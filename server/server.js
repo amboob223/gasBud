@@ -28,7 +28,7 @@ app.post("/gassers", async (req, res) => {
     try {
         const { name, location, bank } = req.body;
         const newData = await pool.query(
-            "INSERT INTO gassers(id,name,location,bank) VALUES(nextval('gasser_id_seq'),$1,$2,$3) RETURNING *",
+            "INSERT INTO gassers(id,name,location,bank) VALUES(nextval('gassers_id_seq'),$1,$2,$3) RETURNING *",
             [name, location, bank]
         )
         res.json(newData.rows)

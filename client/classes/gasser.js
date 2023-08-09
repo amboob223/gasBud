@@ -16,4 +16,4 @@ class Gasser {
     }
 }
 
-module.exports = { Gasser };
+exports = { Gasser };

@@ -5,8 +5,8 @@
 //and the make payment buttob, 
 
 
-import { Gasser } from "./gasser"; // we had to deconstruct gasser class from the file 
-import { User } from "./user";
+const { Gasser } = require("./gasser"); // we had to deconstruct gasser class from the file 
+const { User } = require("./user");
 
 class App {
 
@@ -52,4 +52,4 @@ class App {
 }
 
 
-module.exports = { App };
+exports = { App };
