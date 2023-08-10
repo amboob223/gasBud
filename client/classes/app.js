@@ -22,7 +22,7 @@ class App {
     addUser(name, location, pay) {
         const user = new User(name, location, pay);
 
-        this.users.push(user.toString());
+        this.users.push(user.toStrin());
         console.log(`we pushed ${user.name} to the console.`)
     }
     //make a payment 
@@ -74,9 +74,8 @@ class User {
         this.pay = pay;
     }
 
-    toString() {
+    toStrin() {
         return `${this.name} - Location: ${this.location} - Bank: ${this.pay}`;
     }
 
 }
-exports = { App };
