@@ -30,7 +30,43 @@
     </div>
     <script src="../classes/app.js"></script>
     <script src="../gas.js"></script>
+    <script>
 
+        // const gasButton = document.getElementById("gbtn");
+        // const gname = document.getElementById("gname");
+        // const glocation = document.getElementById("glocation");
+        // const gbank = document.getElementById("bank");
+        //adding a gasser to db 
+
+        gasButton.addEventListener("click", async (event) => {
+            event.preventDefault()
+            try {
+                const app = new App();
+                app.addGasser(gname.value, glocation.value, parseFloat(gbank.value));
+
+                const body = {
+                    name: gname.value,
+                    location: glocation.value,
+                    bank: gbank.value
+                }
+                const response = await fetch("http://localhost:5000/gassers", {
+                    method: "POST",
+                    headers: { "Content-type": "Application/json" },
+                    body: JSON.stringify(body)
+                })
+
+                gname.value = ""
+                glocation.value = ""
+                gbank.value = ""
+
+                alert("we got you big dawg")
+                console.log(app.gassers)
+            } catch (error) {
+                console.log(error.message)
+            }
+        });
+
+    </script>
 </body>
 
 </html>
