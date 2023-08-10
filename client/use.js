@@ -5,7 +5,7 @@
 //so now we can set it up for user input but is still feel like we can use regex
 //these are the variables
 
-
+// this just puts the varibale we needed 
 const ubtn = document.getElementById("ubtn");
 
 const uname = document.getElementById("uname");
