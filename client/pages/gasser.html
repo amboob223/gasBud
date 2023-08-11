@@ -30,69 +30,116 @@
             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
         </div>
     </form> -->
+    <header>
+        <nav>
+            <h1>
+                Link up for gas
+            </h1>
+        </nav>
+    </header>
+    <main>
+        <div class="outcomp">
 
-    <div class="outC">
-        <div class="inC">
-            <form class="form-group" action="http://localhost:5000/gassers">
-                <ul>
-                    <li>
-                        <label for="gname">Name</label>
-                        <input class="form-control" type="text" id="gname">
-                    </li>
-                    <li>
-                        <label for="glocation">What station</label>
-                        <input class="form-control" type="text" id="glocation">
-                    </li>
-                    <li>
-                        <label for="gbank">Agreed Amount</label>
-                        <input class="form-control" type="text" id="bank">
-                    </li>
-                </ul>
 
-            </form>
+            <div class="comp">
+                <div class="outC">
+                    <div class="inC">
+                        <form class="form-group" action="http://localhost:5000/gassers">
+                            <ul>
+                                <li>
+                                    <label for="gname">Name</label>
+                                    <input class="form-control" type="text" id="gname">
+                                </li>
+                                <li>
+                                    <label for="glocation">What station</label>
+                                    <input class="form-control" type="text" id="glocation">
+                                </li>
+                                <li>
+                                    <label for="gbank">Agreed Amount</label>
+                                    <input class="form-control" type="text" id="bank">
+                                </li>
+                            </ul>
 
-            <div class="outC">
-                <div class="inC">
-                    <button id="gbtn"> Be a gasser</button>
+                        </form>
+
+                        <div class="outC">
+                            <div class="inC">
+                                <button id="gbtn"> Be a gasser</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+            <div class="comp">
+
+
+
+                <table class="table" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th scope="col">name</th>
+                            <th scope="col">location</th>
+                            <th scope="col">amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+
+                    </tbody>
+                </table>
+                <div class="outC">
+                    <div class="inC">
+                        <button id="bn"> get users</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
-    <script src="../classes/app.js"></script>
-    <!-- this is for the variables below-->
-    <script src="../gas.js"></script>
 
-    <script>
+        <button id="dbtn">delete</button>
 
-        gasButton.addEventListener("click", async (event) => {
-            event.preventDefault()
-            try {
-                const app = new App();
-                app.addGasser(gname.value, glocation.value, parseFloat(gbank.value));
+    </main>
+    <footer>
 
-                const body = {
-                    name: gname.value,
-                    location: glocation.value,
-                    bank: gbank.value
+
+        <script src="../classes/app.js"></script>
+        <!-- this is for the variables below-->
+        <script src="../gas.js"></script>
+
+        <script>
+
+            gasButton.addEventListener("click", async (event) => {
+                event.preventDefault()
+                try {
+                    //so here in the response part we can make the logic for the class methods 
+                    const app = new App();
+                    app.addGasser(gname.value, glocation.value, parseFloat(gbank.value));
+
+                    const body = {
+                        name: gname.value,
+                        location: glocation.value,
+                        bank: gbank.value
+                    }
+                    const response = await fetch("http://localhost:5000/gassers", {
+                        method: "POST",
+                        headers: { "Content-type": "Application/json" },
+                        body: JSON.stringify(body)
+                    })
+
+                    gname.value = ""
+                    glocation.value = ""
+                    gbank.value = ""
+
+                    alert("we got you big dawg")
+                    console.log(app.gassers)
+                } catch (error) {
+                    console.log(error.message)
                 }
-                const response = await fetch("http://localhost:5000/gassers", {
-                    method: "POST",
-                    headers: { "Content-type": "Application/json" },
-                    body: JSON.stringify(body)
-                })
+            });
 
-                gname.value = ""
-                glocation.value = ""
-                gbank.value = ""
-
-                alert("we got you big dawg")
-                console.log(app.gassers)
-            } catch (error) {
-                console.log(error.message)
-            }
-        });
-
-    </script>
+        </script>
 </body>
 
 </html>
+</footer>

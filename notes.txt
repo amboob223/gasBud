@@ -1,1 +1,5 @@
-I want to go over the site and see all the things i want to add 
+now we want to make a profile page where we can 
+- we need delete buttons from database 
+- control the size of conyainer wiyh the getters 
+- we need to add way to pay in the app cass and use the method
+- that id class stuff is for the buttons

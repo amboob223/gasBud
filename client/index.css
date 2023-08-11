@@ -11,3 +11,17 @@ li {
 #indexdiv {
     margin: 5%;
 }
+
+
+.outcomp {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2%;
+
+}
+
+nav>h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}

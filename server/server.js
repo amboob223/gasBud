@@ -22,6 +22,18 @@ app.post("/users", async (req, res) => {
     }
 })
 
+app.delete("/users", async (req, res) => {
+
+    try {
+        const data = await pool.query(
+            "DELETE FROM users;"
+        );
+        res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 app.get("/users", async (req, res) => {
     try {
         const data = await pool.query(
@@ -46,6 +58,17 @@ app.post("/gassers", async (req, res) => {
         console.log(error.message)
     }
 
+});
+app.delete("/gassers", async (req, res) => {
+
+    try {
+        const data = await pool.query(
+            "DELETE FROM gassers;"
+        );
+        res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
 });
 
 app.get("/gassers", async (req, res) => {

@@ -20,70 +20,116 @@
 </head>
 
 <body>
+    <header>
+        <nav>
+            <h1>
+                pull up and get your gas
+            </h1>
+        </nav>
+    </header>
+    <main>
+        <div class="outcomp">
+            <div class="comp">
+                <div class="outC">
+                    <div class="inC">
+                        <form class="form-group" action="http://localhost:5000/users">
+                            <ul>
+                                <li>
+                                    <label for="uname">Whats your name</label>
+                                    <input class="form-control" type="text" id="uname">
+                                </li>
+                                <li>
+                                    <label for="ulocation">what gas station</label>
+                                    <input class="form-control" type="text" id="ulocation">
+                                </li>
+                                <li>
+                                    <label for="pay">How much gas</label>
+                                    <input class="form-control" type="text" id="pay">
+                                </li>
+                            </ul>
 
-    <div class="outC">
-        <div class="inC">
-            <form class="form-group" action="http://localhost:5000/users">
-                <ul>
-                    <li>
-                        <label for="uname">Whats your name</label>
-                        <input class="form-control" type="text" id="uname">
-                    </li>
-                    <li>
-                        <label for="ulocation">what gas station</label>
-                        <input class="form-control" type="text" id="ulocation">
-                    </li>
-                    <li>
-                        <label for="pay">How much gas</label>
-                        <input class="form-control" type="text" id="pay">
-                    </li>
-                </ul>
-
-            </form>
-
-            <div class="outC">
-                <div class="inC">
-                    <button id="ubtn"> Be a user</button>
+                        </form>
+                    </div>
                 </div>
+
+                <div class="outC">
+                    <div class="inC">
+                        <button id="ubtn"> Be a user</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="comp">
+                <div class="outC">
+                    <div class="inC">
+                        <table class="table" style="display: none;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">name</th>
+                                    <th scope="col">location</th>
+                                    <th scope="col">pay</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbody">
+
+                            </tbody>
+                        </table>
+                        <div class="outC">
+                            <div class="inC">
+                                <button id="get"> get gassers</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
+
         </div>
-    </div>
-    <script src="../classes/app.js"></script>
-    <script src="../use.js"></script>
-    <script>
+        </div>
+        <button id="dbtn">delete all gassers</button>
+    </main>
+    <footer>
 
-        ubtn.addEventListener("click", async (event) => {
+        <script src="../classes/app.js"></script>
+        <script src="../use.js"></script>
+        <script>
 
-            event.preventDefault();
-            try {
-                const app = new App();
-                app.addUser(uname.value, ulocation.value, pay.value);
+            ubtn.addEventListener("click", async (event) => {
 
-                const body = {
-                    name: uname.value,
-                    location: ulocation.value,
-                    pay: pay.value
-                };
-                const response = await fetch("http://localhost:5000/users", {
-                    headers: { "Content-type": "Application/json" },
-                    method: "POST",
-                    body: JSON.stringify(body)//json interfacce works with some class and we get strinngify which takes a objectc parameter an makes a object
-                })
+                event.preventDefault();
+                try {
+                    const app = new App();
+                    app.addUser(uname.value, ulocation.value, pay.value);
 
-                uname.value = "",
-                    ulocation.value = "",
-                    pay.value = ""
+                    const body = {
+                        name: uname.value,
+                        location: ulocation.value,
+                        pay: pay.value
+                    };
+                    const response = await fetch("http://localhost:5000/users", {
+                        headers: { "Content-type": "Application/json" },
+                        method: "POST",
+                        body: JSON.stringify(body)//json interfacce works with some class and we get strinngify which takes a objectc parameter an makes a object
+                    })
 
-                alert("okay go to the station")
-                console.log(app.users)
-            } catch (error) {
-                console.log(error.message)
-            }
+                    uname.value = "",
+                        ulocation.value = "",
+                        pay.value = ""
 
-        })
-    </script>
+                    alert("okay go to the station")
+                    console.log(app.users)
+                } catch (error) {
+                    console.log(error.message)
+                }
+
+            })
+        </script>
+
+
+    </footer>
+
 </body>
 
 </html>

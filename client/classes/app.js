@@ -40,6 +40,7 @@ class App {
             console.log(error)
         }
     }
+    //we will make getter button for bothh sets of data
 
     addGasser(name, location, bank) {
         const gasser = new Gasser(name, location, bank);
