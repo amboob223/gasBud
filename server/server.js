@@ -20,8 +20,17 @@ app.post("/users", async (req, res) => {
     } catch (error) {
         console.log(error.message)
     }
+})
 
-
+app.get("/users", async (req, res) => {
+    try {
+        const data = await pool.query(
+            "SELECT * FROM users;"
+        );
+        res.json(data)
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
 app.post("/gassers", async (req, res) => {
@@ -37,6 +46,18 @@ app.post("/gassers", async (req, res) => {
         console.log(error.message)
     }
 
+});
+
+app.get("/gassers", async (req, res) => {
+
+    try {
+        const data = await pool.query(
+            "SELECT * FROM gassers;"
+        )
+        res.json(data);
+    } catch (error) {
+        console.log(error.message)
+    }
 })
 
 const PORT = process.env.PORT || 5000;
