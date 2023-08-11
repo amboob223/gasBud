@@ -68,7 +68,7 @@ get.addEventListener("click", async (event) => {
 dbtn.addEventListener("click", async (event) => {
 
     try {
-        const body = await fetch("http://localhost:5000/users", {
+        const body = await fetch("http://localhost:5000/gassers", {
             method: "DELETE",
 
         });
