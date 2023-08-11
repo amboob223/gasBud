@@ -65,15 +65,15 @@ get.addEventListener("click", async (event) => {
     }
 })
 
-dbtn.addEventListener("click", async (event) => {
+// dbtn.addEventListener("click", async (event) => {
 
-    try {
-        const body = await fetch("http://localhost:5000/gassers", {
-            method: "DELETE",
+//     try {
+//         const body = await fetch("http://localhost:5000/gassers", {
+//             method: "DELETE",
 
-        });
+//         });
 
-    } catch (error) {
-        console.log(error.message);
-    }
-})
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+// })

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="outC">
+        <div class="inC">
+            <form action="http://localhost:5000/gassers">
+                <ul>
+                    <li>
+                        <input type="text" id="gname">
+                    </li>
+                    <li>
+                        <input type="text" id="glocation">
+                    </li>
+                    <li>
+                        <input type="text" id="bank">
+                    </li>
+                </ul>
+
+            </form>
+            <button id="gbtn"> Be a gasser</button>
+        </div>
+    </div>
+    <script src="../gas.js"></script>
+    <script src="../classes/app.js"></script>
+    <script>
+  
+    gasButton.addEventListener("click", async (event) => {
+        event.preventDefault();
+        try {
+            const app = new App();
+            app.addGasser(gname.value, glocation.value, parseFloat(gbank.value));
+
+            gname.value = "";
+            glocation.value = "";
+            gbank.value = "";
+console.log(app.gassers)
+            alert("Gasser added successfully!");
+        } catch (error) {
+            console.log(error.message);
+        }
+    });
+    
+    </script>
+</body>
+
+</html>

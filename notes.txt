@@ -3,3 +3,4 @@ now we want to make a profile page where we can
 - control the size of conyainer wiyh the getters 
 - we need to add way to pay in the app cass and use the method
 - that id class stuff is for the buttons
+today tommorrow this week 
