@@ -22,29 +22,56 @@ class App {
     addUser(name, location, pay) {
         const user = new User(name, location, pay);
 
-        this.users.push(user.toStrin());
+        this.users.push(user);
         console.log(`we pushed ${user.name} to the console.`)
     }
-    //make a payment 
+
+
     makePay(gasserName, amount) {
-
         try {
-            const gasser = this.gassers.find(gasser => gasser.name === gasserName)
-            if (!gasser) {
-                console.log(`we did not see gasser name `)
-            }
+            const gasser = this.gassers.find(gasser => gasser.name === gasserName);
 
-            gasser.receivePay(amount);
-            console.log(`${gasser.bank}`)
+            if (gasser) {
+                console.log("Gasser found:", gasser);
+                gasser.receivePay(amount)
+                // gasser.receivePay(amount);
+                console.log(gasser)
+            } else {
+                console.log(`No gasser found with name ${gasserName}`);
+            }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
+    //make a payment 
+    // makePay(gasserName, amount) {
+
+    //     try {
+
+    //         const gasser = this.gassers[0]
+    //         // .find(gasser => gasser[0].name === gasserName)
+    //         if (gasser.name === gasserName) {
+
+    //             console.log(isNan(gasser.bank))
+    //             console.log("yo")
+    //             console.log(gasser)
+    //         }
+    //         if (!gasser) {
+    //             console.log(`we did not see gasser name `)
+    //         }
+
+
+    //         // gasser.receivePay(amount);
+
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
     //we will make getter button for bothh sets of data
 
     addGasser(name, location, bank) {
         const gasser = new Gasser(name, location, bank);
-        this.gassers.push(gasser.toString())
+        this.gassers.push(gasser)
         console.log(`here is the ${gasser.name}`)
     }
 
@@ -60,11 +87,11 @@ class Gasser {
     }
 
     receivePay(pay) {
-        this.bank += pay
+        this.bank += parseInt(pay)
         return this.bank
     }
     toString() {
-        return `${this.name} - Location: ${this.location} - Bank: ${this.bank}`;
+        return `-name: ${this.name} - Location: ${this.location} - Bank: ${this.bank}`;
     }
 }
 

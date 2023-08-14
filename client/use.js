@@ -53,7 +53,10 @@ get.addEventListener("click", async (event) => {
                 tbody.appendChild(row)
 
                 row.addEventListener("click", async () => {
-                    row.innerHTML = ""
+                    const payPageUrl = `pay.html?id=${info.id}`; // Assuming info.id exists
+
+                    // Navigate to the pay.html page
+                    window.location.href = payPageUrl;
                 })
             } // so a nested event was the way
 

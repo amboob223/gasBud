@@ -6,6 +6,10 @@ body {
     /* Light gray */
 }
 
+.nav-link {
+    color: darkgray;
+}
+
 /* Header */
 header {
     background-color: #343a40;

@@ -37,6 +37,9 @@ gbtn.addEventListener("click", async (event) => {
             tbody.appendChild(row)
 
             row.addEventListener("click", async () => {
+
+                pageUrl = `pay.html?id=${info.id}`
+                window.location.href = pageUrl
                 row.innerHTML = ""
             })
 
