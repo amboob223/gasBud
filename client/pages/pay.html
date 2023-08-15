@@ -61,7 +61,7 @@
                 const response = await fetch("http://localhost:5000/gassers");
                 const jsondata = await response.json();
                 const info = jsondata.rows; // Assuming your data structure
-                console.log(info)
+
                 // Use the fetched data here, e.g., info[0]
                 // For now, let's assume info[0] has the data
                 for (let i = 0; i < info.length; i++) {
@@ -80,6 +80,7 @@
 
                 };
 
+                console.log(info)
 
 
             } catch (error) {

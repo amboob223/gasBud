@@ -31,7 +31,7 @@ get.addEventListener("click", async (event) => {
         const jsondata = await data.json();//this gives a json object 
         const info = jsondata.rows
 
-        console.log(info)
+
 
         info.forEach((info) => {
             const row = document.createElement("tr");

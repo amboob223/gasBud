@@ -41,6 +41,7 @@ gbtn.addEventListener("click", async (event) => {
                 pageUrl = `pay.html?id=${info.id}`
                 window.location.href = pageUrl
                 row.innerHTML = ""
+
             })
 
 
