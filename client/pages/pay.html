@@ -41,8 +41,16 @@
         <div class="outC">
             <div class="inC">
                 <!-- ... (your content) ... -->
-                <h1>do you want to choose and pay <span id="idinfo"></span></h1>
-                <button id="payb">pay now</button>
+                <h1>Do you want to choose <span id="idinfo"></span> and pay $ <span id="ppay"></span> at <span
+                        id=ploc></span> ?</h1>
+
+                <div class="outC">
+                    <div class="inC">
+                        <button id="payb">pay now</button>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </main>
@@ -57,7 +65,8 @@
 
         const idinfo = document.getElementById("idinfo");
         const payb = document.getElementById("payb");
-
+        const ppay = document.getElementById("ppay");
+        const ploc = document.getElementById("ploc");
         // Fetch gasser data from the server
 
         // this is important here we used the url to get varible from one page and used in another
@@ -82,10 +91,12 @@
 
 
             idinfo.innerText = namee
+            ppay.innerText = bank
+            ploc.innerText = locationn
 
 
-            payb.addEventListener("click", async () => {
-
+            payb.addEventListener("click", async (event) => {
+                event.preventDefault();
                 const response = await fetch("http://localhost:5000/gassers");
                 const jsondata = await response.json();
                 const info = jsondata.rows; // Assuming your data structure
@@ -100,8 +111,10 @@
                 app.addGasser(namee, locationn, parseInt(bank))
 
                 app.makePay(namee, parseInt(bank)); // Use the correct properties
-            });
 
+                alert("okay you can pull up to the station an pay the gasser")
+
+            });
 
 
 
