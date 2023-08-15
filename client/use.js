@@ -52,11 +52,18 @@ get.addEventListener("click", async (event) => {
 
                 tbody.appendChild(row)
 
-                row.addEventListener("click", async () => {
-                    const payPageUrl = `pay.html?id=${info.id}`; // Assuming info.id exists
+                var isClicked = false;
 
-                    // Navigate to the pay.html page
-                    window.location.href = payPageUrl;
+                row.addEventListener("click", async () => {
+
+                    isClicked = true
+                    if (isClicked) {
+                        const payPageUrl = `pay.html?name=${encodeURIComponent(info.name)}&location=${encodeURIComponent(info.location)}&bank=${encodeURIComponent(info.bank)}`;
+
+                        // Navigate to the pay.html page
+                        window.location.href = payPageUrl;
+                    }
+
                 })
             } // so a nested event was the way
 

@@ -50,47 +50,71 @@
         <!-- ... (your footer content) ... -->
     </footer>
     <script src="../pay.js"></script>
+    ]
+
     <script src="../classes/app.js"></script>
     <script>
+
         const idinfo = document.getElementById("idinfo");
         const payb = document.getElementById("payb");
 
         // Fetch gasser data from the server
-        async function fetchGasserData() {
-            try {
+
+        // this is important here we used the url to get varible from one page and used in another
+        try {
+            function getParametername(name) {
+                const urlparams = new URLSearchParams(window.location.search);
+                return urlparams.get(name)
+            }
+            function getParameterlocation(locationn) { // dont use locationas name here
+                const urlp = new URLSearchParams(window.location.search);
+                return urlp.get(locationn)
+            }
+            function getparambank(bank) {
+                const urlb = new URLSearchParams(window.location.search);
+                return urlb.get(bank)
+            }
+
+            //vars
+            const namee = getParametername("name");
+            const locationn = getParameterlocation("location");
+            const bank = getparambank("bank");
+
+
+            idinfo.innerText = namee
+
+
+            payb.addEventListener("click", async () => {
+
                 const response = await fetch("http://localhost:5000/gassers");
                 const jsondata = await response.json();
                 const info = jsondata.rows; // Assuming your data structure
 
-                // Use the fetched data here, e.g., info[0]
-                // For now, let's assume info[0] has the data
-                for (let i = 0; i < info.length; i++) {
 
 
-                    idinfo.innerHTML = info[i].name;
+                //okay we need to iterate through the array and we select the one that that selected
 
 
-                    payb.addEventListener("click", async () => {
+                // this o=is server pay part
+                const app = new App();
+                app.addGasser(namee, locationn, bank)
 
-                        const app = new App();
-                        app.addGasser(info[i].name, info[i].location, info[i].bank)
-
-                        app.makePay(info[i].name, parseInt(info[i].bank)); // Use the correct properties
-                    });
-
-                };
-
-                console.log(info)
+                app.makePay(namee, parseInt(bank)); // Use the correct properties
+            });
 
 
-            } catch (error) {
 
-                console.log(error);
 
-            }
+
+        } catch (error) {
+
+            console.log(error);
+
         }
 
-        fetchGasserData();
+
+
+
     </script>
 </body>
 
