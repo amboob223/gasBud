@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <form>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Example label</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Another label</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        </div>
+    </form> -->
+    <header>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="../index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./gasser.html">Be a GasBud</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./user.html">Get gas</a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+    <main>
+        <nav>
+            <h1>
+                Link up for gas
+            </h1>
+        </nav>
+        <div class="outcomp">
+
+
+            <div class="comp">
+                <div class="outC">
+                    <div class="inC">
+                        <form class="form-group" action="http://localhost:5000/gassers">
+                            <ul>
+                                <li>
+                                    <label for="gname">Name</label>
+                                    <input class="form-control" type="text" id="gname">
+                                </li>
+                                <li>
+                                    <label for="glocation">What station</label>
+                                    <input class="form-control" type="text" id="glocation">
+                                </li>
+                                <li>
+                                    <label for="gbank">Agreed Amount</label>
+                                    <input class="form-control" type="text" id="bank">
+                                </li>
+                            </ul>
+
+                        </form>
+
+                        <div class="outC">
+                            <div class="inC">
+                                <button id="gbtn"> Be a gasser</button>
+                                <button id="bn"> get users</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="comp">
+
+
+
+                <table class="table" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th scope="col">name</th>
+                            <th scope="col">location</th>
+                            <th scope="col">amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+        <!-- <button id="dbtn">delete</button> -->
+
+    </main>
+    <footer>
+
+
+        <script src="../classes/app.js"></script>
+        <!-- this is for the variables below-->
+        <script src="../gas.js"></script>
+
+        <script>
+
+            gasButton.addEventListener("click", async (event) => {
+                event.preventDefault()
+                try {
+                    //so here in the response part we can make the logic for the class methods 
+                    const app = new App();
+                    app.addGasser(gname.value, glocation.value, parseFloat(gbank.value));
+
+                    const body = {
+                        name: gname.value,
+                        location: glocation.value,
+                        bank: gbank.value
+                    }
+                    const response = await fetch("http://localhost:5000/gassers", {
+                        method: "POST",
+                        headers: { "Content-type": "Application/json" },
+                        body: JSON.stringify(body)
+                    })
+
+                    gname.value = ""
+                    glocation.value = ""
+                    gbank.value = ""
+
+                    alert("we got you big dawg")
+                    console.log(app.gassers)
+                } catch (error) {
+                    console.log(error.message)
+                }
+            });
+
+        </script>
+</body>
+
+</html>
+</footer>
