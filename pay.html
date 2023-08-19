@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="../index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./gasser.html">Be a GasBud</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./user.html">Get gas</a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+    <main>
+        <!-- ... (your content) ... -->
+        <div class="outC">
+            <div class="inC">
+                <!-- ... (your content) ... -->
+                <h1>Do you want to choose <span id="idinfo"></span> and pay $ <span id="ppay"></span> at <span
+                        id=ploc></span> ?</h1>
+
+                <div class="outC">
+                    <div class="inC">
+                        <button id="payb">pay now</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- ... (your footer content) ... -->
+    </footer>
+    <script src="../pay.js"></script>
+    ]
+
+    <script src="../classes/app.js"></script>
+    <script>
+
+        const idinfo = document.getElementById("idinfo");
+        const payb = document.getElementById("payb");
+        const ppay = document.getElementById("ppay");
+        const ploc = document.getElementById("ploc");
+        // Fetch gasser data from the server
+
+        // this is important here we used the url to get varible from one page and used in another
+        try {
+            function getParametername(name) {
+                const urlparams = new URLSearchParams(window.location.search);
+                return urlparams.get(name)
+            }
+            function getParameterlocation(locationn) { // dont use locationas name here
+                const urlp = new URLSearchParams(window.location.search);
+                return urlp.get(locationn)
+            }
+            function getparambank(bank) {
+                const urlb = new URLSearchParams(window.location.search);
+                return urlb.get(bank)
+            }
+
+            //vars
+            const namee = getParametername("name");
+            const locationn = getParameterlocation("location");
+            const bank = getparambank("bank");
+
+
+            idinfo.innerText = namee
+            ppay.innerText = bank
+            ploc.innerText = locationn
+
+
+            payb.addEventListener("click", async (event) => {
+                event.preventDefault();
+                const response = await fetch("http://localhost:5000/gassers");
+                const jsondata = await response.json();
+                const info = jsondata.rows; // Assuming your data structure
+
+
+
+                //okay we need to iterate through the array and we select the one that that selected
+
+
+                // this o=is server pay part
+                const app = new App();
+                app.addGasser(namee, locationn, parseInt(bank))
+
+                app.makePay(namee, parseInt(bank)); // Use the correct properties
+
+                alert("okay you can pull up to the station an pay the gasser")
+
+            });
+
+
+
+
+        } catch (error) {
+
+            console.log(error);
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
