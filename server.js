@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
-
+const path = require("path");
 //middlewarte
 app.use(cors());
 app.use(express.json());
@@ -10,7 +10,7 @@ app.use(express.json());
 // making a post
 
 app.get("/", async (req, res) => {
-    res.send("word");
+    res.sendFile(path.join(__dirname, '/index.html'));
 })
 
 app.post("/users", async (req, res) => {
