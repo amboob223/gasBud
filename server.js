@@ -8,6 +8,11 @@ app.use(cors());
 app.use(express.json());
 
 // making a post
+
+app.get("/", async (req, res) => {
+    res.send("word");
+})
+
 app.post("/users", async (req, res) => {
     try {
         const { name, location, pay } = req.body;
