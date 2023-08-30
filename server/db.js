@@ -2,7 +2,7 @@ const Pool = require("pg").Pool; // we are requireing a pool object from the pg 
 
 const POOL = new Pool({
     user: "k6t3PAxmb6ckEHuY",
-    host: "gas-vbrfm-postgresql.gas-vbrfm.svc.cluster.local",
+    host: "gas-vbrfm-postgresql.external.kinsta.app",
     port: 5432,
     database: "gas",
     password: "gas-vbrfm-postgresql.gas-vbrfm.svc.cluster.local"
