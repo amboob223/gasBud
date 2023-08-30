@@ -5,7 +5,7 @@ const POOL = new Pool({
     host: "gas-vbrfm-postgresql.external.kinsta.app",
     port: 5432,
     database: "gas",
-    password: "gas-vbrfm-postgresql.gas-vbrfm.svc.cluster.local"
+    password: "lUNkvbN5FEfwhJeA"
     //later I will make a conncetion string with env and git ignore
 }) // this is a instance of the pool object that takes an obkect 
 
